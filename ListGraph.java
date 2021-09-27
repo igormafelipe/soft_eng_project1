@@ -136,11 +136,17 @@ public class ListGraph implements Graph {
             throw new NoSuchElementException();
         }
         Queue<String> q = new LinkedList<>();
+        HashSet<String> h = new HashSet<String>();
+
         q.add(n1);
+        h.add(n1);
         while(!q.isEmpty()) {
             for (String edge : this.succ(q.poll())) {
                 if (edge == n2) { return true; }
-                q.add(edge);
+                if (!h.contains(edge)) {
+                    q.add(edge);
+                    h.add(edge);
+                }
             }
         }
         return false;

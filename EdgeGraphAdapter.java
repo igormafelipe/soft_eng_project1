@@ -90,17 +90,17 @@ public class EdgeGraphAdapter implements EdgeGraph {
       // If so, return true, otherwise false.
 
       Queue<String> q = new LinkedList<String>();
-        q.add(e.get(0).getSrc());
-        for (Edge edge : e) {
-          q.add(edge.getDst());
-        }
-        String src = q.poll();
-        while(!q.isEmpty()) {
-          System.out.println(src + "->" + q.peek());
-          if (this.g.hasEdge(src, q.peek())) {
-            src = q.poll();
-          } else { return false; }
-        }
-        return true;
+      q.add(e.get(0).getSrc());
+      for (Edge edge : e) {
+        q.add(edge.getDst());
+      }
+      String src = q.poll();
+      while(!q.isEmpty()) {
+        System.out.println(src + "->" + q.peek());
+        if (this.g.hasEdge(src, q.peek())) {
+          src = q.poll();
+        } else { return false; }
+      }
+      return true;
     }
 }
