@@ -132,7 +132,7 @@ public class ListGraph implements Graph {
     }
 
     public boolean connected(String n1, String n2) {
-        if ((nodes.containsKey(n1) == false || nodes.containsKey(n2) == false)) {
+        if (!(this.hasNode(n1) && this.hasNode(n1))) {
             throw new NoSuchElementException();
         }
         Queue<String> q = new LinkedList<>();
