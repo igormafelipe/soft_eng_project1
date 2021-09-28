@@ -89,17 +89,8 @@ public class EdgeGraphAdapter implements EdgeGraph {
       // Then check if path is on the graph (what i did bellow.)
       // If so, return true, otherwise false.
 
-      Queue<String> q = new LinkedList<String>();
-      q.add(e.get(0).getSrc());
       for (Edge edge : e) {
-        q.add(edge.getDst());
-      }
-      String src = q.poll();
-      while(!q.isEmpty()) {
-        System.out.println(src + "->" + q.peek());
-        if (this.g.hasEdge(src, q.peek())) {
-          src = q.poll();
-        } else { return false; }
+        if (!this.g.hasEdge(edge.getSrc(), edge.getDst())) { return false; }
       }
       return true;
     }
